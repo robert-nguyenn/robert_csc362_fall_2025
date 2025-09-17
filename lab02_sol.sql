@@ -46,9 +46,9 @@ SHOW CREATE TABLE ratings;
 
 -- sample data (exactly as in the prompt)
 INSERT INTO movies (movie_id, movie_name, release_date, genre) VALUES
-(1, 'The Hunt for Red October',         '1990-03-02', 'Acton, Adventure, Thriller'),
+(1, 'The Hunt for Red October',         '1990-03-02', 'Action, Adventure, Thriller'),
 (2, 'Lady Bird',                         '2017-12-01', 'Comedy, Drama'),
-(3, 'Inception',                         '2010-08-16', 'Acton, Adventure, Science Fiction'),
+(3, 'Inception',                         '2010-08-16', 'Action, Adventure, Science Fiction'),
 (4, 'Monty Python and the Holy Grail',   '1975-04-03', 'Comedy');
 
 INSERT INTO consumers (consumer_id, consumer_first_name, consumer_last_name, address, city, state, zip_code) VALUES
@@ -79,7 +79,7 @@ SELECT consumer_first_name, consumer_last_name, movie_name, rating
 
 -- Part 5
 /* ---------------------------------------------------------------------------
-   Problem: movies.genre stores multiple comma-separated values (e.g., 'Acton, Adventure, Thriller').
+   Problem: movies.genre stores multiple comma-separated values (e.g., 'Action, Adventure, Thriller').
    That is a multivalued, non-atomic attribute (violates 1NF) and makes searching/indexing/updating hard.
    Fix: remove genre from MOVIES, add a GENRES lookup and a MOVIE_GENRES junction (many-to-many).
 --------------------------------------------------------------------------- */
@@ -158,7 +158,7 @@ INSERT INTO ratings (movie_id, consumer_id, when_rated, rating) VALUES
 
 -- genres and mappings (normalized)
 INSERT INTO genres (genre_id, genre_name) VALUES
-(1, 'Acton'), (2, 'Adventure'), (3, 'Thriller'),
+(1, 'Action'), (2, 'Adventure'), (3, 'Thriller'),
 (4, 'Comedy'), (5, 'Drama'), (6, 'Science Fiction');
 
 INSERT INTO movie_genres (movie_id, genre_id) VALUES
