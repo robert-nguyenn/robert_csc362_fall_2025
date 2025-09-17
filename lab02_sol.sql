@@ -79,7 +79,7 @@ SELECT consumer_first_name, consumer_last_name, movie_name, rating
 
 -- Part 5
 /* ---------------------------------------------------------------------------
-   Problem: movies.genre stores multiple comma-separated values (e.g., 'Action, Adventure, Thriller').
+   Problem: movies.genre stores multiple comma-separated values ('Action, Adventure, Thriller').
    That is a multivalued, non-atomic attribute (violates 1NF) and makes searching/indexing/updating hard.
    Fix: remove genre from MOVIES, add a GENRES lookup and a MOVIE_GENRES junction (many-to-many).
 --------------------------------------------------------------------------- */
