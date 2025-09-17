@@ -2,7 +2,6 @@
    Part 3: Create movie_ratings DB, build tables with PK/FK, insert sample rows,
            and display table definitions + contents. */
 
--- start clean
 DROP DATABASE IF EXISTS movie_ratings;
 CREATE DATABASE movie_ratings;
 USE movie_ratings;
@@ -45,7 +44,6 @@ SHOW CREATE TABLE consumers;
 SHOW CREATE TABLE ratings;
 
 -- sample data (exactly as in the prompt)
-
 INSERT INTO movies (movie_id, movie_name, release_date, genre) VALUES
 (1, 'The Hunt for Red October',         '1990-03-02', 'Acton, Adventure, Thriller'),
 (2, 'Lady Bird',                         '2017-12-01', 'Comedy, Drama'),
@@ -69,3 +67,9 @@ INSERT INTO ratings (movie_id, consumer_id, when_rated, rating) VALUES
 SELECT * FROM movies;
 SELECT * FROM consumers;
 SELECT * FROM ratings;
+
+-- generate a report
+SELECT consumer_first_name, consumer_last_name, movie_name, rating
+  FROM movies
+       NATURAL JOIN ratings
+       NATURAL JOIN consumers;

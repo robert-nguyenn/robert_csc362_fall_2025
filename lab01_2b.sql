@@ -20,3 +20,5 @@ INSERT INTO instructors (instructor_first_name, instructor_last_name, instructor
 
 SELECT instructor_id, instructor_first_name, instructor_last_name, instructor_campus_phone
 FROM instructors;
+
+
