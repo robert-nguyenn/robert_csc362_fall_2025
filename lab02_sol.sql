@@ -20,10 +20,10 @@ CREATE TABLE consumers (
     consumer_id         INT           AUTO_INCREMENT PRIMARY KEY,
     consumer_first_name VARCHAR(50)   NOT NULL,
     consumer_last_name  VARCHAR(50)   NOT NULL,
-    address             VARCHAR(100)  NOT NULL,
-    city                VARCHAR(50)   NOT NULL,
-    state               CHAR(2)       NOT NULL,
-    zip_code            CHAR(5)       NOT NULL
+    consumer_address    VARCHAR(100)  NOT NULL,
+    consumer_city       VARCHAR(50)   NOT NULL,
+    consumer_state      CHAR(2)       NOT NULL,
+    consumer_zip_code   CHAR(5)       NOT NULL
 );
 
 -- RATINGS (links movies ↔ consumers)
@@ -51,7 +51,7 @@ INSERT INTO movies (movie_id, movie_name, release_date, genre) VALUES
 (3, 'Inception',                         '2010-08-16', 'Action, Adventure, Science Fiction'),
 (4, 'Monty Python and the Holy Grail',   '1975-04-03', 'Comedy');
 
-INSERT INTO consumers (consumer_id, consumer_first_name, consumer_last_name, address, city, state, zip_code) VALUES
+INSERT INTO consumers (consumer_id, consumer_first_name, consumer_last_name, consumer_address, consumer_city, consumer_state, consumer_zip_code) VALUES
 (1, 'Toru',   'Okada',   '800 Glenridge Ave',  'Hobart',     'IN', '46343'),
 (2, 'Kumiko', 'Okada',   '864 NW Bohemia St',  'Vincentown', 'NJ', '08088'),
 (3, 'Noboru', 'Wataya',  '342 Joy Ridge St',   'Hermitage',  'TN', '37076'),
@@ -106,10 +106,10 @@ CREATE TABLE consumers (
     consumer_id         INT          AUTO_INCREMENT PRIMARY KEY,
     consumer_first_name VARCHAR(50)  NOT NULL,
     consumer_last_name  VARCHAR(50)  NOT NULL,
-    address             VARCHAR(100) NOT NULL,
-    city                VARCHAR(50)  NOT NULL,
-    state               CHAR(2)      NOT NULL,
-    zip_code            CHAR(5)      NOT NULL
+    consumer_address    VARCHAR(100) NOT NULL,
+    consumer_city       VARCHAR(50)  NOT NULL,
+    consumer_state      CHAR(2)      NOT NULL,
+    consumer_zip_code   CHAR(5)      NOT NULL
 );
 
 -- RATINGS (same as before)
@@ -143,7 +143,7 @@ INSERT INTO movies (movie_id, movie_name, release_date) VALUES
 (3, 'Inception',                      '2010-08-16'),
 (4, 'Monty Python and the Holy Grail','1975-04-03');
 
-INSERT INTO consumers (consumer_id, consumer_first_name, consumer_last_name, address, city, state, zip_code) VALUES
+INSERT INTO consumers (consumer_id, consumer_first_name, consumer_last_name, consumer_address, consumer_city, consumer_state, consumer_zip_code) VALUES
 (1, 'Toru',   'Okada',   '800 Glenridge Ave', 'Hobart',     'IN', '46343'),
 (2, 'Kumiko', 'Okada',   '864 NW Bohemia St', 'Vincentown', 'NJ', '08088'),
 (3, 'Noboru', 'Wataya',  '342 Joy Ridge St',  'Hermitage',  'TN', '37076'),
