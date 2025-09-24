@@ -54,5 +54,5 @@ Mark each element which is affected by this rule.
 - Enforce **ON DELETE SET NULL** for `Trials.customer_id` FK.  
 
 ## Notes
-
+Matches ER diagram: Customers—Sales [R], Customers—Trials [N].
 
