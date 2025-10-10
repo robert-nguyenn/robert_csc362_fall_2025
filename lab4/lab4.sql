@@ -1,23 +1,28 @@
 -- Lab 4 - Flying Carpets Gallery
 
-SET FOREIGN_KEY_CHECKS = 0;
+-- SET FOREIGN_KEY_CHECKS = 0;
 
--- Drop triggers first (if they exist)
-DROP TRIGGER IF EXISTS trg_sales_no_loss_ins;
-DROP TRIGGER IF EXISTS trg_sales_no_loss_upd;
-DROP TRIGGER IF EXISTS trg_trials_no_overlap_ins;
-DROP TRIGGER IF EXISTS trg_trials_no_overlap_upd;
-DROP TRIGGER IF EXISTS trg_trials_max4_ins;
-DROP TRIGGER IF EXISTS trg_trials_max4_upd;
+-- -- Drop triggers first (if they exist)
+-- DROP TRIGGER IF EXISTS trg_sales_no_loss_ins;
+-- DROP TRIGGER IF EXISTS trg_sales_no_loss_upd;
+-- DROP TRIGGER IF EXISTS trg_trials_no_overlap_ins;
+-- DROP TRIGGER IF EXISTS trg_trials_no_overlap_upd;
+-- DROP TRIGGER IF EXISTS trg_trials_max4_ins;
+-- DROP TRIGGER IF EXISTS trg_trials_max4_upd;
 
--- Drop tables child -> parent
-DROP TABLE IF EXISTS Sales;
-DROP TABLE IF EXISTS Trials;
-DROP TABLE IF EXISTS Rugs;
-DROP TABLE IF EXISTS Customers;
-DROP TABLE IF EXISTS Addresses;
+-- -- Drop tables child -> parent
+-- DROP TABLE IF EXISTS Sales;
+-- DROP TABLE IF EXISTS Trials;
+-- DROP TABLE IF EXISTS Rugs;
+-- DROP TABLE IF EXISTS Customers;
+-- DROP TABLE IF EXISTS Addresses;
 
-SET FOREIGN_KEY_CHECKS = 1;
+-- SET FOREIGN_KEY_CHECKS = 1;
+
+-- Consider doing this instead: -- WB
+DROP DATABASE IF EXISTS flying_carpets;
+CREATE DATABASE flying_carpets;
+USE flying_carpets;
 
 -- Tables
 
