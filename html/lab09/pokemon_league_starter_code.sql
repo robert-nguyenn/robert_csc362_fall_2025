@@ -134,14 +134,17 @@ VALUES ('Bulbasaur', 20, 1, TRUE),
        ('Squirtle', 22, 1, TRUE),
        ('Pidgeotto', 23, 1, TRUE),
        ('Snorlax',   24, 1, TRUE);
+-- Ash now has: Pikachu + five above = 6.
+-- Attempt to insert a 7th party member for Ash (should ERROR: max 6)
 -- INSERT INTO pokemon (pokemon_species, pokemon_level, trainer_id, pokemon_is_in_party)
 -- VALUES ('Butterfree', 25, 1, TRUE);  -- Expected: ERROR
 
 -- 3) Trading a non-party Pokémon should ERROR.
+--    Expected: ERROR "both Pokémon must be in party."
 -- CALL trade_pokemon(
 --   (SELECT pokemon_id FROM pokemon WHERE pokemon_species='Magicarp'),
 --   (SELECT pokemon_id FROM pokemon WHERE pokemon_species='Onyx')
--- );  -- Expected: ERROR
+-- );
 
 -- 4) Valid trade should succeed.
 -- CALL trade_pokemon(
