@@ -1,9 +1,7 @@
 <?php
-// Start session with 30 minute timeout
 session_set_cookie_params(60 * 30);
 session_start();
 
-// Handle logout button
 if (isset($_POST['logout'])) {
     session_unset();
     session_destroy();
@@ -11,44 +9,37 @@ if (isset($_POST['logout'])) {
     exit;
 }
 
-// Handle login form submission
 if (isset($_POST['login_name']) && $_POST['login_name'] !== '') {
     $_SESSION['user_name'] = trim($_POST['login_name']);
     $_SESSION['added_count'] = 0;
     $_SESSION['deleted_count'] = 0;
 }
 
-// Check for existing theme cookie, default to light
 $theme = 'light';
 if (isset($_COOKIE['theme'])) {
     $theme = $_COOKIE['theme'];
 }
 
-// Handle theme change
+
 if (isset($_POST['set_theme'])) {
     if ($_POST['set_theme'] == 'light' || $_POST['set_theme'] == 'dark') {
         $theme = $_POST['set_theme'];
-        // Set cookie that never expires (10 years)
         setcookie('theme', $theme, time() + 60*60*24*365*10, '/', '', false, true);
         header("Location: " . $_SERVER['PHP_SELF']);
         exit;
     }
 }
 
-// Pick CSS file based on theme
 if ($theme == 'dark') {
     $cssFile = 'darkmode.css';
 } else {
     $cssFile = 'basic.css';
 }
 
-// Connect to database
 require_once __DIR__ . '/connect.php';
 
-// Handle form submissions
 if (isset($_SERVER['REQUEST_METHOD']) && $_SERVER['REQUEST_METHOD'] == 'POST') {
 
-    // Add new instrument
     if (isset($_POST['add_instrument'])) {
         $instrument_type = trim($_POST['instrument_type']);
         if ($instrument_type != '') {
@@ -56,7 +47,6 @@ if (isset($_SERVER['REQUEST_METHOD']) && $_SERVER['REQUEST_METHOD'] == 'POST') {
             $stmt->bind_param("s", $instrument_type);
             $stmt->execute();
 
-            // Update session counter if successful
             if ($stmt->affected_rows == 1) {
                 if (!isset($_SESSION['added_count'])) {
                     $_SESSION['added_count'] = 0;
@@ -65,12 +55,10 @@ if (isset($_SERVER['REQUEST_METHOD']) && $_SERVER['REQUEST_METHOD'] == 'POST') {
             }
             $stmt->close();
         }
-        // Redirect to prevent resubmission
         header("Location: " . $_SERVER['PHP_SELF']);
         exit;
     }
 
-    // Delete instrument by ID
     if (isset($_POST['delete_instrument'])) {
         $instrument_id = (int)$_POST['instrument_id'];
         if ($instrument_id > 0) {
@@ -78,7 +66,7 @@ if (isset($_SERVER['REQUEST_METHOD']) && $_SERVER['REQUEST_METHOD'] == 'POST') {
             $stmt->bind_param("i", $instrument_id);
             $stmt->execute();
 
-            // Update session counter if successful
+
             if ($stmt->affected_rows == 1) {
                 if (!isset($_SESSION['deleted_count'])) {
                     $_SESSION['deleted_count'] = 0;
@@ -87,13 +75,13 @@ if (isset($_SERVER['REQUEST_METHOD']) && $_SERVER['REQUEST_METHOD'] == 'POST') {
             }
             $stmt->close();
         }
-        // Redirect to prevent resubmission
+
         header("Location: " . $_SERVER['PHP_SELF']);
         exit;
     }
 }
 
-// Get all instruments from database
+
 $instruments = [];
 $result = $conn->query("SELECT instrument_id, instrument_type FROM instruments ORDER BY instrument_id ASC");
 if ($result) {
