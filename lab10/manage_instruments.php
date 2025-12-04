@@ -130,7 +130,6 @@ $conn->close();
   <button type="submit" name="delete_instrument" value="1">Delete</button>
 </form>
 
-
 <?php if (!empty($rows)): ?>
   <h3>Current Instruments</h3>
   <table>
